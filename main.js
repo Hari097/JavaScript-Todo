@@ -3,7 +3,8 @@ let todoItemsContainer = document.getElementById("todoItemsContainer")
 let todoList = [
     {text:"Learn HTML"},
     {text:"Learn CSS"},
-    {text:"Learn JavaScript"}
+    {text:"Learn JavaScript"},
+    {text:"Learn React.js"}
 ]
 
 function createAppendTodo(todo){
