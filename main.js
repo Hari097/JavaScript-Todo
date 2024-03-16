@@ -5,7 +5,7 @@ let todoList = [
     {text:"Learn CSS"},
     {text:"Learn Bootstrap"},
     {text:"Learn JavaScript"},
-    {text:"Learn React.js"}
+    {text:"python"}
 ]
 
 function createAppendTodo(todo){
