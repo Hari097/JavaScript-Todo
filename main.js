@@ -8,11 +8,14 @@ let todoList = [
 ] 
 let countodo = todoList.length
 
-function createAppendTodo(todo){
-    let todoElement  = document.createElement("li")
+function createAppendTodo(todo){ 
+
+    let todoid = "todo" + todo.uniqueNo
+
+    let todoElement  = document.createElement("l")
     todoElement.classList.add("todo-item-container","d-flex","flex-row")
-    todoItemsContainer.appendChild(todoElement) 
-    todoElement.id = todoList.text
+    todoElement.id = todoid
+    todoItemsContainer.appendChild(todoElement)
 
     let inputElement = document.createElement("input")
     inputElement.type = "checkbox"
@@ -37,6 +40,9 @@ function createAppendTodo(todo){
 
     let deleteIcon = document.createElement("i")
     deleteIcon.classList.add("far","fa-trash-alt","delete-icon")
+    deleteIcon.onclick = function(){
+        onDeletetodo(todoid)
+    }
     deleteIconContainer.appendChild(deleteIcon)
 
 }
@@ -52,7 +58,8 @@ let userInputValue = userInputElement.value
 
 if(userInputValue === ""){
 alert("Enter Vaild text")
-}
+return
+} 
 
 countodo = countodo + 1 
 
@@ -66,4 +73,11 @@ userInputElement.value = ""
 
 addTodoButton.onclick = function(){
     onAddTodo()
+} 
+
+
+function onDeletetodo(todo){
+let todoelement = document.getElementById(todo)
+
+todoItemsContainer.removeChild(todoelement)
 }
