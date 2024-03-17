@@ -12,6 +12,10 @@ function createAppendTodo(todo){
 
     let todoid = "todo" + todo.uniqueNo
 
+    let checkboxid = "todo" + todo.uniqueNo 
+
+    let labelid  = "todo" + todo.uniqueNo
+
     let todoElement  = document.createElement("l")
     todoElement.classList.add("todo-item-container","d-flex","flex-row")
     todoElement.id = todoid
@@ -19,15 +23,19 @@ function createAppendTodo(todo){
 
     let inputElement = document.createElement("input")
     inputElement.type = "checkbox"
-    inputElement.id = "checkboxInput"
+    inputElement.id = checkboxid
     inputElement.classList.add("checkbox-input") 
     todoElement.appendChild(inputElement) 
+    inputElement.onclick = function(){
+        onTodoStatusChange(checkboxid,labelid)
+    }
 
     let labelcontainer = document.createElement("div") 
     labelcontainer.classList.add("label-container", "d-flex","flex-row")
     todoElement.appendChild(labelcontainer) 
 
     let labelElement = document.createElement("label")
+    labelElement.id = labelid
     labelElement.setAttribute("for","checkboxInput")
     labelElement.classList.add("checkbox-label") 
     labelElement.textContent = todo.text 
@@ -80,4 +88,11 @@ function onDeletetodo(todo){
 let todoelement = document.getElementById(todo)
 
 todoItemsContainer.removeChild(todoelement)
+}
+
+function onTodoStatusChange(checkboxid,labelid){
+    let checkboxElement = document.getElementById(checkboxid)
+    let labelElement = document.getElementById(labelid)
+
+    labelElement.classList.toggle("checked")
 }
