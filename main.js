@@ -1,12 +1,12 @@
 let todoItemsContainer = document.getElementById("todoItemsContainer")
-
+let addTodoButton = document.getElementById("addTodoButton")
 let todoList = [
-    {text:"Learn HTML"},
-    {text:"Learn CSS"},
-    {text:"Learn Bootstrap"},
-    {text:"Learn JavaScript"},
-    {text:"node.js"}
-]
+    {text:"Learn HTML",uniqueNo:1},
+    {text:"Learn CSS",uniqueNo:2},
+    {text:"Learn Bootstrap",uniqueNo:3},
+    {text:"Learn JavaScript",uniqueNo:4}
+] 
+let countodo = todoList.length
 
 function createAppendTodo(todo){
     let todoElement  = document.createElement("li")
@@ -43,4 +43,27 @@ function createAppendTodo(todo){
 
 for (let todoeach of todoList){
     createAppendTodo(todoeach)
+}
+
+function onAddTodo(){
+let userInputElement = document.getElementById("todoUserInput")
+let userInputValue = userInputElement.value
+
+
+if(userInputValue === ""){
+alert("Enter Vaild text")
+}
+
+countodo = countodo + 1 
+
+let newtodo = {
+    text:userInputValue,
+    uniqueNo:countodo
+}
+createAppendTodo(newtodo)
+userInputElement.value = ""
+}
+
+addTodoButton.onclick = function(){
+    onAddTodo()
 }
