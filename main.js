@@ -1,12 +1,28 @@
 let todoItemsContainer = document.getElementById("todoItemsContainer")
 let addTodoButton = document.getElementById("addTodoButton")
-let todoList = [
-    {text:"Learn HTML",uniqueNo:1},
-    {text:"Learn CSS",uniqueNo:2},
-    {text:"Learn Bootstrap",uniqueNo:3},
-    {text:"Learn JavaScript",uniqueNo:4}
-] 
+let saveTodoButton = document.getElementById("saveTodoButton")
+
+
+
+
+let todoList = getTodoListFromLocalStorage()
 let countodo = todoList.length
+
+
+saveTodoButton.onclick = function(){
+    
+    localStorage.setItem("todolist",JSON.stringify(todoList))
+}
+
+function getTodoListFromLocalStorage(){
+    let stringifyTodoList = localStorage.getItem("todolist")
+    let parseTodoList = JSON.parse(stringifyTodoList)
+    if(parseTodoList === null){
+    return []
+    } else{
+        return parseTodoList
+    }
+    }
 
 function createAppendTodo(todo){ 
 
@@ -75,6 +91,7 @@ let newtodo = {
     text:userInputValue,
     uniqueNo:countodo
 }
+todoList.push(newtodo)
 createAppendTodo(newtodo)
 userInputElement.value = ""
 }
@@ -96,3 +113,4 @@ function onTodoStatusChange(checkboxid,labelid){
 
     labelElement.classList.toggle("checked")
 }
+
