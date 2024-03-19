@@ -137,8 +137,17 @@ addTodoButton.onclick = function(){
 function onDeletetodo(todo){
 let todoelement = document.getElementById(todo)
 
-todoItemsContainer.removeChild(todoelement) 
+todoItemsContainer.removeChild(todoelement)  
 
+let deleteElementIndex = todoList.findIndex(function(element){
+let eachtodoId = "todo" + element.uniqueNo 
+if(eachtodoId === todo.uniqueNo){
+return true
+}else{
+    return false
+}
+})
+todoList.splice(deleteElementIndex,1)
 }
 
 
